@@ -1,0 +1,22 @@
+{% extends "main/layout.html" %}
+{% load static %}
+
+{% block global_styling %}
+<link rel="stylesheet" href="{% static 'css/chall.css' %}" />
+{% endblock global_styling %}
+
+{% block content %}
+<h1 hidden>{{ csrf_token }}</h1>
+<div class="container">
+    <h1>I absolutely love cookies! But my mother always hides them :/ <br><br>
+        Help me find the cookies.<br><br>
+        
+        HINT: only “MOTHER” can access cookies</h1>
+    <form id="key-form">
+        <label for="key">enter flag here:</label>
+        <input type="text" name="key" id="key" placeholder="code here" />
+        <button type="submit">subMit</button>
+    </form>
+</div>
+<script src="{% static 'js/first.js' %}"></script>
+{% endblock content %}
