@@ -34,10 +34,16 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, f'You are now logged in as {username}')
-            return redirect('leaderboard')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Invalid credentials')
             return redirect('login')
 
     context = {}
     return render(request, 'accounts/login.html', context)
+
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'You have been logged out')
+    return redirect('login')

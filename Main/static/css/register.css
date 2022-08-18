@@ -9,6 +9,7 @@ body{
   background-image: url("../img/hacker.png");
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
   
 }
 

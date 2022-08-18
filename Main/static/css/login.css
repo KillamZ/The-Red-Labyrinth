@@ -16,6 +16,7 @@ body {
   font-family: 'Inter UI', sans-serif;
   margin: 0;
   padding: 20px;
+  overflow: hidden;
 }
 .page {
   /* background: black; */
@@ -133,4 +134,26 @@ input::-moz-focus-inner {
 }
 #submit:active {
   color: #d0d0d2;
+}
+
+#submit:hover {
+  color: #f2f2f2;
+  cursor: pointer;
+}
+
+.link{
+  color: #797979;
+  font-size: 13px;
+  line-height: 1.5;
+  font-family: "Overpass Mono", system-ui;
+  text-decoration: none;
+  align-self: start;
+  margin: 0 auto;
+
+}
+
+.link:hover {
+
+  text-decoration: underline;
+
 }

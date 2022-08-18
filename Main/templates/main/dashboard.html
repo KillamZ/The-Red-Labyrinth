@@ -1,7 +1,70 @@
-{% extends "main/layout.html" %} {% load static %} {% block global_styling %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}" />
-{% endblock global_styling %} 
+{% extends "main/layout.html" %}
+{% load static %}
+
+{% block global_styling %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+{% endblock global_styling %}
 
 {% block content %}
-<h1> Welcome to the home page </h1>
-{% endblock content %} 
+<header id="main">
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+<div class="l-wrapper">
+    <div class="c-header"><h1>CHALLENGES</h1>
+      <a href="{% url 'leaderboard' %}">-LEADERBOARD</a>
+    </div>
+
+    <div class="flex-container">
+
+        <div class="flex-child">
+            <h1> Welcome back, {{user}} </h1>
+            <a href="{% url 'logout' %}">logout</a>
+
+        </div>
+        
+        <div class="flex-child">
+            
+          <h1> #1/100 </h1>
+          {% comment %} <h2> 1500 POINTS </h2> {% endcomment %}
+        </div>
+        
+      </div>
+
+</div>
+
+
+
+
+
+<div class="container">
+    <table class='table'>
+        <tr class="table-row">
+            <th class="table-heading">Challenge</th>
+            <th class="table-heading">Category</th>
+            <th class="table-heading">Difficulty</th>
+            <th class="table-heading">Points</th>
+            <th class="table-heading">Solved</th>
+
+
+        </tr>
+        {% for challenge in challenges %}
+        <tr class='table-row'>
+            <td class="table-data">{{challenge.title}}</td>
+            <td class="table-data">{{challenge.category}}</td>
+            <td class="table-data">{{challenge.difficulty}}</td>
+            <td class="table-data">{{challenge.points}}</td>
+
+
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</header>
+{% endblock content %}
