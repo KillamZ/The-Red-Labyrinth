@@ -23,4 +23,5 @@ def dashboard(request):
 
 # Challenge pages
 def cookieMonster(request):
-    return render(request, 'main/cookie.html')
+    context = {"challenge": Challenges.objects.get(title="Cookie")}
+    return render(request, 'main/challenges/cookie.html', context)

@@ -7,6 +7,7 @@ class Challenges(models.Model):
     difficulty = models.CharField(max_length=255)
     points = models.IntegerField()
     description = models.TextField(max_length=1000, default='')
+    hint = models.CharField(max_length=255, default='')
     flag = models.CharField(max_length=255, default='DPSS{EMPTY}')
 
     def __str__(self):

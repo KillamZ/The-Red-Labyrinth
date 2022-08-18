@@ -14,6 +14,15 @@
     <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+
 
 <div class="l-wrapper">
     <div class="c-header"><h1>CHALLENGES</h1>
@@ -30,11 +39,13 @@
         
         <div class="flex-child">
             
-          <h1> #1/100 </h1>
+          <h1> RANK: &nbsp; #1/100 </h1>
           {% comment %} <h2> 1500 POINTS </h2> {% endcomment %}
         </div>
         
       </div>
+      <br><br>
+      <hr>
 
 </div>
 
@@ -51,7 +62,6 @@
             <th class="table-heading">Points</th>
             <th class="table-heading">Solved</th>
 
-
         </tr>
         {% for challenge in challenges %}
         <tr class='table-row'>
@@ -59,6 +69,8 @@
             <td class="table-data">{{challenge.category}}</td>
             <td class="table-data">{{challenge.difficulty}}</td>
             <td class="table-data">{{challenge.points}}</td>
+            <td class="table-data"><a href="{{challenge.link}}">Challenge Link</a></td></td>
+
 
 
 

@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}"> <!-- Global Style -->
+    <link rel="stylesheet" href="{% static 'css/chall.css' %}"> <!-- Global Style -->
+
+    {% block global_styling %}
+    {% endblock %}
+
+    <title>
+      {% if title %}{{ title }}{% else %}Treasure Hunt{% endif %}
+    </title>
+</head>
+<body>
+  <h1 hidden>{{ csrf_token }}</h1>
+  <div class="container">
+  <a href="{% url 'dashboard' %}" > BACK TO CHALLENGES </a>
+
+      <h1>{{challenge.description}}</h1><br><br>
+      <h1>{{challenge.hint}}</h1>
+          
+      <form id="key-form">
+          <label for="key">enter flag here:</label>
+          <input type="text" name="key" id="key" placeholder="code here" />
+          <button type="submit">subMit</button>
+      </form>
+  </div>
+  {% block content %}
+
+  {% endblock %}
+
+  {% block global_scripts %}
+  {% endblock %}
+
+</body>
+</html>

@@ -126,7 +126,7 @@ html {
     --light: #CAD4E1;
     --lighter: #F5F8FC;
     --lightest: var(--white);
-    --primary: #1696ff;
+    --primary: #f65925;
     --primary-light: #DDD9FF;
     --primary-trans: #ffffff;
     --yellow: #FDCB6E;
@@ -209,11 +209,13 @@ html {
 
   .c-header a{
     color: #ffffffa2;
+    font-size: 18.5px;
+
   }
 
   .c-header a:hover{
     color: #ffffff;
-    font-size: 16.5px;
+    font-size: 19px;
 
   }
   
