@@ -64,12 +64,13 @@
 
         </tr>
         {% for challenge in challenges %}
+        link = {{challenge.link}}
         <tr class='table-row'>
             <td class="table-data">{{challenge.title}}</td>
             <td class="table-data">{{challenge.category}}</td>
             <td class="table-data">{{challenge.difficulty}}</td>
             <td class="table-data">{{challenge.points}}</td>
-            <td class="table-data"><a href="{{challenge.link}}">Challenge Link</a></td></td>
+            <td class="table-data"><a href="../{{challenge.link}}" >Challenge Link</a></td></td>
 
 
 
@@ -77,6 +78,10 @@
         </tr>
         {% endfor %}
     </table>
+</div>
+<div class="l-wrapper">
+    <hr>
+    <h1>IT COUNCIL, DPSS 2022-2023</h1>
 </div>
 </header>
 {% endblock content %}
