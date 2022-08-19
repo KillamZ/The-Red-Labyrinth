@@ -10,6 +10,7 @@ class Challenges(models.Model):
     hint = models.CharField(max_length=255, default='')
     flag = models.CharField(max_length=255, default='DPSS{EMPTY}')
     link = models.CharField(max_length=255, default='dashboard')
+    solve_status = models.CharField(max_length=2, default='')
 
     def __str__(self):
         return self.title

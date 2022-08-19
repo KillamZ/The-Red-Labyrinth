@@ -55,7 +55,7 @@ body{
   height: auto;
   width: 420px;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 40%;
   transform: translate(-60%,-60%);
 
@@ -75,11 +75,11 @@ h1{
 }
 
 .card {
-  height: 560px;
+  height: 620px;
   width: 720px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(35px);
+  backdrop-filter: blur(3px);
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.25);
   padding: 60px 70px 10px 30px;
@@ -142,17 +142,7 @@ input::placeholder{
   outline: none;
 }
 
-.card-exp > input[id="card-exp"]{
-  border: none;
-  margin-bottom: 0px;
-  outline: none;
-}
 
-.card-ccv > input[id="card-ccv"]{
-  border: none;
-  margin-bottom: 0px;
-  outline: none;
-}
 
 .underline{
   transition: all 0.3s;
@@ -221,7 +211,7 @@ input[id="textbox"]:focus
   font-size: 30px;
   height: 50px;
   margin-bottom: -2px;
-  width: 400px;
+  width: 600px;
 }
 
 input[id="textbox"]:hover
@@ -264,43 +254,7 @@ input[id="card-name"]:focus{
   width: 160px;
 }
 
-input[id="card-exp"]:hover{
-  border-bottom: 2px solid white;
-  color: white;
-  margin-bottom: -2px;
-  font-size: 16px;
-  height: 26px;
-  width: 80px;
-}
 
-input[id="card-exp"]:focus{
-  border-bottom: 2px solid white;
-  color: white;
-  margin-bottom: -2px;
-  font-size: 16px;
-  height: 26px;
-  width: 80px;
-}
-
-input[id="card-ccv"]:hover{
-  border-bottom: 2px solid white;
-  color: white;
-  margin-bottom: -2px;
-  font-size: 16px;
-  height: 26px;
-  width: 50px;
-  
-}
-
-input[id="card-ccv"]:focus{
-  border-bottom: 2px solid white;
-  color: white;
-  margin-bottom: -2px;
-  font-size: 16px;
-  height: 26px;
-  width: 50px;
-  
-}
 
 
 label {
