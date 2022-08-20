@@ -67,18 +67,19 @@
 
         </tr>
         {% for challenge in challenges %}
-        link = {{challenge.link}}
         <tr class='table-row'>
             <td class="table-data">{{challenge.title}}</td>
             <td class="table-data">{{challenge.category}}</td>
             <td class="table-data">{{challenge.difficulty}}</td>
             <td class="table-data">{{challenge.points}}</td>
             <td class="table-data"><a href="../{{challenge.link}}" >Challenge Link</a></td></td>
-            <td class="table-data">{{challenge.solve_status}}</td>
-
-
-
-
+            <td class="table-data">
+                {% if challenge.solved == True %}
+                ✅
+                {% else %}
+                ❌
+                {% endif %}
+            </td>
 
         </tr>
         {% endfor %}
