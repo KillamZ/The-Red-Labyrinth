@@ -18,7 +18,6 @@ class Player(AbstractUser):
     email = models.CharField(_('email'), max_length=100, unique=True, null=True)
     school = models.ForeignKey(School, on_delete=models.CASCADE, null=True, default='')
     score = models.IntegerField(default=0)
-    rank = models.IntegerField(default=0)  # remove this later
     phone_number = models.CharField(default=None, null=True, max_length=50)
 
     USERNAME_FIELD = 'username'

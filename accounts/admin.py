@@ -5,7 +5,7 @@ from .models import Player, School
 # Register your models here.
 class PlayerAdmin(UserAdmin):
     list_display = (
-        'first_name', 'last_name', 'username', 'email', 'school', 'score', 'rank', 'phone_number'
+        'first_name', 'last_name', 'username', 'email', 'school', 'score', 'phone_number'
         )
 
     fieldsets = (
@@ -15,8 +15,8 @@ class PlayerAdmin(UserAdmin):
         ('Personal info', {
             'fields': ('first_name', 'last_name', 'email', 'school', 'phone_number')
         }),
-        ('Rank info', {
-            'fields': ('score', 'rank')
+        ('Score', {
+            'fields': ('score',)
         })
     )
 
@@ -27,8 +27,8 @@ class PlayerAdmin(UserAdmin):
         ('Personal info', {
             'fields': ( 'first_name', 'last_name', 'email', 'school', 'phone_number')
         }),
-        ('Rank Info', {
-            'fields': ('score', 'rank')
+        ('Score Info', {
+            'fields': ('score',)
         })
     )
 admin.site.register(Player, PlayerAdmin)
