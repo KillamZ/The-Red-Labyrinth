@@ -8,12 +8,16 @@ from django.db.models import Count
 
 #main pages
 def index(request):
+    user = request.user
+    if request.user.is_authenticated:
+        return redirect('dashboard')
     return render(request, 'main/index.html')
 
 def register(request):
     return render(request, 'main/register.html')    
 
 def leaderboard(request):
+    user = request.user
     emojis = ['👏', '👍', '🙌', '🤩', '🔥', '⭐️', '🏆', '💯']
     members = [
         {
@@ -22,7 +26,7 @@ def leaderboard(request):
             "emoji": random.choice(emojis)
         }
     ]
-    context = {'players': Player.objects.all().order_by('-score')[:], "members": members}
+    context = {'player':Player.objects.get(username=user), 'players': Player.objects.all().order_by('-score')[:],'total_players':Player.objects.count(),'top_player':Player.objects.all().order_by('-score')[0], "members": members}
     return render(request, 'main/leaderboard.html', context)
 
 def dashboard(request):

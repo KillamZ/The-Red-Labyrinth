@@ -35,11 +35,11 @@
           <div class="u-display--flex u-justify--space-between">
             <div class="u-text--left">
               <div class="u-text--small">My Rank</div>
-              <h2>1st Place</h2>
+              <h2>#{{player.id}}/{{total_players}}</h2>
             </div>
             <div class="u-text--right">
               <div class="u-text--small">My Score</div>
-              <h2>36</h2>
+              <h2>{{player.score}}</h2>
             </div>
           </div>
         </div>
@@ -50,8 +50,8 @@
             <!-- add the winner code here -->
             <div class="u-text-small u-text--medium u-mb--16">TOP PLAYER</div>
             <img class="c-avatar c-avatar--lg" src="{{ members.0.img }}"/>
-            <h3 class="u-mt--16">{{ members.0.name }}</h3>
-            <span class="u-text--teal u-text--small">{{ members.0.handle }}</span>
+            <h3 class="u-mt--16">{{ top_player.first_name }}&nbsp;{{ top_player.last_name }}</h3>
+            <span class="u-text--teal u-text--small">{{ top_player.username }}</span>
           </div>
         </div>
       </div>
