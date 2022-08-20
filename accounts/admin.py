@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, School
+from .models import Player, School
 
 # Register your models here.
-class CustomUserAdmin(UserAdmin):
+class PlayerAdmin(UserAdmin):
     list_display = (
         'first_name', 'last_name', 'username', 'email', 'school', 'score', 'rank', 'phone_number'
         )
@@ -31,5 +31,5 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('score', 'rank')
         })
     )
-admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Player, PlayerAdmin)
 admin.site.register(School)
