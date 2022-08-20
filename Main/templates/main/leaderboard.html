@@ -78,11 +78,11 @@
             <li class='c-list__item'>
             <div class="c-list__grid">
                 {% if player.id == 1 %}
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">{{ player.id }}</div>
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--orange">{{ player.id }}</div>
                 {% elif player.id == 2 %}
                   <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--teal">{{ player.id }}</div>
                 {% elif player.id == 3 %}
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--orange">{{ player.id }}</div>
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">{{ player.id }}</div>
                 {% else %}
                   <div class="c-flag c-place u-bg--transparent">{{ player.id }}</div>
 
@@ -91,7 +91,8 @@
                     <img class="c-avatar c-media__img" src="{{ member.img }}" />
                     <div class="c-media__content">
                       <div class="c-media__title">{{ player.first_name }} {{ player.last_name }}</div>
-                      <a class="c-media__link u-text--small" href="https://127.0.0.1:8000/${member.handle}" target="_blank">@{{ player.username }}</a>
+                      <a class="c-media__link u-text--small" href="">@{{ player.username }}</a>
+                      {% comment %} <a class="c-media__link u-text--small" href="https://127.0.0.1:8000/{{player.username}}" target="_blank">@{{ player.username }}</a> {% endcomment %}
                     </div>
                   </div>
                   {% if member.rank == 1 %}

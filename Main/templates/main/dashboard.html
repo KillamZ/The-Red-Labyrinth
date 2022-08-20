@@ -26,7 +26,7 @@
 
 <div class="l-wrapper">
     <div class="c-header"><h1>CHALLENGES</h1>
-      <a href="{% url 'leaderboard' %}">-LEADERBOARD</a>
+      <a href="{% url 'leaderboard' %}">LEADERBOARD</a>
     </div>
 
     <div class="flex-container">
@@ -39,7 +39,7 @@
         
         <div class="flex-child">
             
-          <h1> RANK: &nbsp; {{player.id}}/{{total_players}} </h1>
+          <h1> RANK: &nbsp; #{{player.id}}/{{total_players}} </h1>
           <h1> POINTS: &nbsp; {{player.score}} </h1>
 
           {% comment %} <h2> 1500 POINTS </h2> {% endcomment %}
@@ -64,6 +64,8 @@
             <th class="table-heading">Difficulty</th>
             <th class="table-heading">Points</th>
             <th class="table-heading">Solved</th>
+            <th class="table-heading"></th>
+
 
         </tr>
         {% for challenge in challenges %}
@@ -77,7 +79,7 @@
                 {% if challenge.solved == True %}
                 ✅
                 {% else %}
-                ❌
+                
                 {% endif %}
             </td>
 
