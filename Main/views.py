@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from Main.models import Challenges
+import random
 
 # Create your views here.
 
@@ -11,7 +12,18 @@ def register(request):
     return render(request, 'main/register.html')    
 
 def leaderboard(request):
-    return render(request, 'main/leaderboard.html')
+    emojis = ['👏', '👍', '🙌', '🤩', '🔥', '⭐️', '🏆', '💯']
+    members = [
+        {
+            "rank": 1,
+            "name": 'Zaid Mallik',
+            "handle": 'killam',
+            "img": 'https://therecord.media/wp-content/uploads/2021/09/hacker-hoodie.jpg',
+            "points": 136,
+            "emoji": random.choice(emojis)
+        }
+    ]
+    return render(request, 'main/leaderboard.html', {"members": members})
 
 def dashboard(request):
     user = request.user

@@ -46,7 +46,13 @@
       </div>
       <div class="c-card">
         <div class="c-card__body">
-          <div class="u-text--center" id="winner"></div>
+          <div class="u-text--center" id="winner">
+            <!-- add the winner code here -->
+            <div class="u-text-small u-text--medium u-mb--16">TOP PLAYER</div>
+            <img class="c-avatar c-avatar--lg" src="{{ members.0.img }}"/>
+            <h3 class="u-mt--16">{{ members.0.name }}</h3>
+            <span class="u-text--teal u-text--small">{{ members.0.handle }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -67,6 +73,42 @@
                 <div class="u-text--right u-text--small u-text--medium">Points Scored</div>
               </div>
             </li>
+            {% for member in members %}
+            <li class='c-list__item'>
+            <div class="c-list__grid">
+                {% if member.rank == 1 %}
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">{{ member.rank }}</div>
+                {% elif member.rank == 2 %}
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--teal">{{ member.rank }}</div>
+                {% elif member.rank == 3 %}
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--orange">{{ member.rank }}</div>
+                {% else %}
+                  <div class="c-flag c-place u-bg--transparent">{{ member.rank }}</div>
+                {% endif %}
+                  <div class="c-media">
+                    <img class="c-avatar c-media__img" src="{{ member.img }}" />
+                    <div class="c-media__content">
+                      <div class="c-media__title">{{ member.name }}</div>
+                      <a class="c-media__link u-text--small" href="https://127.0.0.1:8000/${member.handle}" target="_blank">@{{ member.handle }}</a>
+                    </div>
+                  </div>
+                  {% if member.rank == 1 %}
+                    <div class="u-text--right c-points u-text--yellow">
+                  {% elif member.rank == 2 %}
+                    <div class="u-text--right c-points u-text--teal">
+                  {% elif member.rank == 3 %}
+                    <div class="u-text--right c-points u-text--orange">
+                  {% else %}
+                    <div class="u-text--right c-points">
+                  {% endif %}
+                    <div class="u-mt--8">
+                      <strong>{{ member.points }}</strong> {{ member.emoji }}
+                    </div>
+                  </div>
+                </div>
+            </li>
+            {% endfor %}
+            <!-- Add entries here -->
           </ul>
         </div>
       </div>
@@ -74,7 +116,7 @@
   </div>
 </div>
 </header>
-  <script  src="{% static 'js/leaderboard.js' %}"></script>
+  <!-- <script  src="{% static 'js/leaderboard.js' %}"></script> -->
   {%for message in messages %}
   <div class="message">{{ message }}</div>
 {%endfor%}
