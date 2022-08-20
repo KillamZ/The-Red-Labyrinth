@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from Main.models import Challenges
 from accounts.models import Player
 import random
+from django.db.models import Count
 
 # Create your views here.
 
@@ -21,12 +22,12 @@ def leaderboard(request):
             "emoji": random.choice(emojis)
         }
     ]
-    context = {'players': Player.objects.all().order_by('-score'), "members": members}
+    context = {'players': Player.objects.all().order_by('-score')[:], "members": members}
     return render(request, 'main/leaderboard.html', context)
 
 def dashboard(request):
     user = request.user
-    context = {'user': user, 'challenges': Challenges.objects.all().order_by('points')}
+    context = {'user': user,'player':Player.objects.get(username=user), 'total_players':Player.objects.count(), 'challenges': Challenges.objects.all().order_by('points')[:]}
     if not request.user.is_authenticated:
         return redirect('login')
     return render(request, 'main/dashboard.html', context)

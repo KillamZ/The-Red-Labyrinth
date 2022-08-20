@@ -77,14 +77,15 @@
             {% for player in players %}
             <li class='c-list__item'>
             <div class="c-list__grid">
-                {% if member.rank == 1 %}
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">{{ player.rank }}</div>
-                {% elif member.rank == 2 %}
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--teal">{{ player.rank }}</div>
-                {% elif member.rank == 3 %}
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--orange">{{ player.rank }}</div>
+                {% if player.id == 1 %}
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">{{ player.id }}</div>
+                {% elif player.id == 2 %}
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--teal">{{ player.id }}</div>
+                {% elif player.id == 3 %}
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--orange">{{ player.id }}</div>
                 {% else %}
-                  <div class="c-flag c-place u-bg--transparent">{{ player.rank }}</div>
+                  <div class="c-flag c-place u-bg--transparent">{{ player.id }}</div>
+
                 {% endif %}
                   <div class="c-media">
                     <img class="c-avatar c-media__img" src="{{ member.img }}" />
