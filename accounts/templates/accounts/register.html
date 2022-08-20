@@ -5,16 +5,10 @@
   <meta charset="UTF-8">
   <title>Login | The Red Labyrinth</title>
   <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  
 
 </head>
-<body>
-  <!-- partial:index.partial.html -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<body class="bg">
   
   <div class="box">
   
@@ -34,70 +28,54 @@
           </div>
           <form method="post" action="">
             {%csrf_token%}
-
-            <div class="group">
-          <div id="textbox">
+          <div class="textbox">
             <label>First Name</label>
             {{form.first_name}}
-
-            {% comment %} <input id="textbox" placeholder="Enter Your Full Name " type="text" required maxlength="255"> {% endcomment %}
-            <hr>
   
           </div>
           &nbsp;  &nbsp;
-          <div id="textbox">
+          <div class="textbox">
             <label>Last Name</label>
             {{form.last_name}}
+  
+          </div>
+          &nbsp;  &nbsp;
 
-            {% comment %} <input id="textbox" placeholder="Enter Your Full Name " type="text" required maxlength="255"> {% endcomment %}
-            <hr>
+          <div class="textbox">
+            <label>School</label>
+            {{form.school}}
   
           </div>
 
-          </div>
           <br>
           <br>
 
-          <div id="textbox">
+          <div class="textbox">
             <label>Username / Team Name</label>
             {{form.username}}
-
-            {% comment %} <input id="textbox" placeholder="Enter Your Full Name " type="text" required maxlength="255"> {% endcomment %}
-            <hr>
   
           </div>
           <br>
   
-          <div id="textbox">
+          <div class="textbox">
             <label>E-mail</label>
             {{form.email}}
-            {% comment %} <input id="textbox" placeholder="Enter Your Email " type="text" required maxlength="255"> {% endcomment %}
-            <hr>
   
           </div>
           <br>
-          <div class="group">
-            <div id="textbox">
+            <div class="textbox">
               <label>Password</label>
             {{form.password1}}
-
-              {% comment %} <input id="textbox" placeholder=" Password " type="text" required maxlength="255"> {% endcomment %}
-              <hr>
     
             </div>
             &nbsp;  &nbsp;
     
-            <div id="textbox">
+            <div class="textbox">
               <label>Re enter password</label>
               {{form.password2}}
-
-            <hr>
-            {% comment %} <input id="textbox" placeholder="Re Enter Password " type="text" required maxlength="255"> {% endcomment %}
-              {% comment %} <span class="underline"></span> {% endcomment %}
     
             </div>
   
-          </div>
   
           <button type="submit">Register</button>
         </form>
@@ -110,6 +88,13 @@
   
   </div>
 
+    
+  <!-- partial:index.partial.html -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </body>
   </html>
