@@ -14,11 +14,11 @@ class School(models.Model):
 class Player(AbstractUser):
     first_name = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=30, blank=False)
-    username = models.CharField(_('username'), max_length=30, unique=True, null=True)
+    username = models.CharField(_('username'), max_length=30, unique=True, null=True) # is this team name?
     email = models.CharField(_('email'), max_length=100, unique=True, null=True)
     school = models.ForeignKey(School, on_delete=models.CASCADE, null=True, default='')
     score = models.IntegerField(default=0)
-    rank = models.IntegerField(default=0)
+    rank = models.IntegerField(default=0)  # remove this later
     phone_number = models.CharField(default=None, null=True, max_length=50)
 
     USERNAME_FIELD = 'username'

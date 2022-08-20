@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
@@ -35,11 +35,11 @@
           <div class="u-display--flex u-justify--space-between">
             <div class="u-text--left">
               <div class="u-text--small">My Rank</div>
-              <h2>#{{player.id}}/{{total_players}}</h2>
+              <h2 id="current_player_rank"></h2>
             </div>
             <div class="u-text--right">
               <div class="u-text--small">My Score</div>
-              <h2>{{player.score}}</h2>
+              <h2 id="current_player_score"></h2>
             </div>
           </div>
         </div>
@@ -47,11 +47,6 @@
       <div class="c-card">
         <div class="c-card__body">
           <div class="u-text--center" id="winner">
-            <!-- add the winner code here -->
-            <div class="u-text-small u-text--medium u-mb--16">TOP PLAYER</div>
-            <img class="c-avatar c-avatar--lg" src="{{ members.0.img }}"/>
-            <h3 class="u-mt--16">{{ top_player.first_name }}&nbsp;{{ top_player.last_name }}</h3>
-            <span class="u-text--teal u-text--small">{{ top_player.username }}</span>
           </div>
         </div>
       </div>
@@ -73,46 +68,9 @@
                 <div class="u-text--right u-text--small u-text--medium">Points Scored</div>
               </div>
             </li>
-            {% for member in members %}
-            {% for player in players %}
+        
             <li class='c-list__item'>
             <div class="c-list__grid">
-                {% if player.id == 1 %}
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--orange">{{ player.id }}</div>
-                {% elif player.id == 2 %}
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--teal">{{ player.id }}</div>
-                {% elif player.id == 3 %}
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">{{ player.id }}</div>
-                {% else %}
-                  <div class="c-flag c-place u-bg--transparent">{{ player.id }}</div>
-
-                {% endif %}
-                  <div class="c-media">
-                    <img class="c-avatar c-media__img" src="{{ member.img }}" />
-                    <div class="c-media__content">
-                      <div class="c-media__title">{{ player.first_name }} {{ player.last_name }}</div>
-                      <a class="c-media__link u-text--small" href="">@{{ player.username }}</a>
-                      {% comment %} <a class="c-media__link u-text--small" href="https://127.0.0.1:8000/{{player.username}}" target="_blank">@{{ player.username }}</a> {% endcomment %}
-                    </div>
-                  </div>
-                  {% if member.rank == 1 %}
-                    <div class="u-text--right c-points u-text--yellow">
-                  {% elif member.rank == 2 %}
-                    <div class="u-text--right c-points u-text--teal">
-                  {% elif member.rank == 3 %}
-                    <div class="u-text--right c-points u-text--orange">
-                  {% else %}
-                    <div class="u-text--right c-points">
-                  {% endif %}
-                    <div class="u-mt--8">
-                      <strong>{{ player.score }}</strong> {{ member.emoji }}
-                    </div>
-                  </div>
-                </div>
-            </li>
-            {% endfor %}
-            {% endfor %}
-
             <!-- Add entries here -->
           </ul>
         </div>
@@ -121,13 +79,28 @@
   </div>
 </div>
 </header>
-  <!-- <script  src="{% static 'js/leaderboard.js' %}"></script> -->
+  <script  src="{% static 'js/leaderboard.js' %}"></script>
   {%for message in messages %}
   <div class="message">{{ message }}</div>
-{%endfor%}
+  {%endfor%}
 <div class="l-wrapper">
   <hr>
   <h1>IT COUNCIL, DPSS 2022-2023</h1>
 </div>
+  <script>
+    var current_player = "{{ player.username }}"
+    var members = [
+      {% for player in players%}
+        {
+          first_name: "{{ player.first_name }}",
+          last_name: "{{ player.last_name }}",
+          score: {{ player.score }},
+          username: "{{ player.username }}",
+          school: "{{ player.school.school }}"
+        },
+      {% endfor %}
+    ]
+    generate_leaderboard(members)
+  </script>
 </body>
 </html>

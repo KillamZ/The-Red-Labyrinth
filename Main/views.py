@@ -17,16 +17,12 @@ def register(request):
     return render(request, 'main/register.html')    
 
 def leaderboard(request):
-    user = request.user
-    emojis = ['👏', '👍', '🙌', '🤩', '🔥', '⭐️', '🏆', '💯']
-    members = [
-        {
-            "rank": 1,
-            "img": 'https://therecord.media/wp-content/uploads/2021/09/hacker-hoodie.jpg',
-            "emoji": random.choice(emojis)
-        }
-    ]
-    context = {'player':Player.objects.get(username=user), 'players': Player.objects.all().order_by('-score')[:],'total_players':Player.objects.count(),'top_player':Player.objects.all().order_by('-score')[0], "members": members}
+    print("RUNNING")
+    if not request.user.is_authenticated:
+        return redirect('login')
+    all_players = Player.objects.all().order_by('-score')
+
+    context = {'player':Player.objects.get(username=request.user), 'players': all_players}
     return render(request, 'main/leaderboard.html', context)
 
 def dashboard(request):
