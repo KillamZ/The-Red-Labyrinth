@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from Main.models import Challenges
+from accounts.models import Player
 import random
 
 # Create your views here.
@@ -16,14 +17,12 @@ def leaderboard(request):
     members = [
         {
             "rank": 1,
-            "name": 'Zaid Mallik',
-            "handle": 'killam',
             "img": 'https://therecord.media/wp-content/uploads/2021/09/hacker-hoodie.jpg',
-            "points": 136,
             "emoji": random.choice(emojis)
         }
     ]
-    return render(request, 'main/leaderboard.html', {"members": members})
+    context = {'players': Player.objects.all().order_by('-score'), "members": members}
+    return render(request, 'main/leaderboard.html', context)
 
 def dashboard(request):
     user = request.user
