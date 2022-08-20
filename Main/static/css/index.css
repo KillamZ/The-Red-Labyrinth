@@ -130,7 +130,7 @@ form button
 
 form button:hover
 {
-    color: black;
+    color: #111111;
     cursor: pointer;
     background-position:right bottom;
 }
@@ -141,7 +141,7 @@ form a
     border: none;
     font-size: 1.5em;
     border: 2px solid #ffffff;
-    background: linear-gradient(to right, black 50%, #ffffff 50%);
+    background: linear-gradient(to right, #111111 50%, #ffffff 50%);
     background-size: 200% 100%;
     background-position:left bottom;
     font-family: "Major Mono Display", monospace;

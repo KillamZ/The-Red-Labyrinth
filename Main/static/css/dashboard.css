@@ -637,11 +637,13 @@ body {
   left: 50%;
 }
 #main .box:nth-child(7) {
+  border-color: #a8dadc;
   animation-delay: 9.5s;
   top: 20%;
   left: 60%;
 }
 #main .box:nth-child(8) {
+  border-color: #1d3557;
   animation-delay: 11s;
   top: 60%;
   left: 40%;
@@ -652,6 +654,8 @@ body {
   left: 80%;
 }
 #main .box:nth-child(10) {
+  border-color: #cb870f;
+
   animation-delay: 13s;
   top: 50%;
   left: 30%;
