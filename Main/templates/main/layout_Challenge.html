@@ -23,17 +23,16 @@
 
       <h1>{{challenge.description}}</h1><br><br>
       <h1>{{challenge.hint}}</h1>
+      {% block content %}{% endblock %}
           
-      <form id="key-form">
+      <form id="key-form" method="POST">
+          <p hidden>{{ csrf_token }}</p>
           <label for="key">enter flag here:</label>
           <input type="text" name="key" id="key" placeholder="code here" />
           <button type="submit">subMit</button>
       </form>
       
   </div>
-  {% block content %}
-
-  {% endblock %}
 
   {% block global_scripts %}
   {% endblock %}

@@ -57,6 +57,6 @@ function generate_leaderboard(members){
         <div class="u-text-small u-text--medium u-mb--16">TOP PLAYER</div>
         <img class="c-avatar c-avatar--lg" src="${winner.img}"/>
         <h3 class="u-mt--16">${winner.username}</h3>
-        <span class="u-text--orange u-text--small">${winner.school}</span>
+        <span class="u-text--teal u-text--small">${winner.school}</span>
     `; 
 }

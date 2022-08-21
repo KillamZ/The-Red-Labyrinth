@@ -14,6 +14,7 @@ urlpatterns = [
     path('vigil/', views.Vigil, name='vigil'),
     path('baseball/', views.baseball, name='baseball'),
     path('robots/', views.robots, name='robots'),
+    path('robots/robots.txt/', views.robotstxt, name='robots.txt'),
     path('aperisolve/', views.aperisolve, name='aperisolve'),
 
 
