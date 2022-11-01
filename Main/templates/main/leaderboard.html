@@ -80,9 +80,9 @@
 </div>
 </header>
   <script  src="{% static 'js/leaderboard.js' %}"></script>
-  {%for message in messages %}
+  {% comment %} {%for message in messages %}
   <div class="message">{{ message }}</div>
-  {%endfor%}
+  {%endfor%} {% endcomment %}
 <div class="l-wrapper">
   <hr>
   <h1>IT COUNCIL, DPSS 2022-2023</h1>

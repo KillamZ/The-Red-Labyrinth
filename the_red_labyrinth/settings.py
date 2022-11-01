@@ -24,13 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2ph19otyp7p0$7f^lv9*=wl-$_pc)zqz%o=!%p-fy5=zo2u-!3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
 AUTH_USER_MODEL = 'accounts.Player'
-
 
 INSTALLED_APPS = [
     'Main.apps.MainConfig',
