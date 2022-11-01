@@ -175,6 +175,13 @@ html {
     margin: auto;
     padding: 1.6rem 1.6rem 3.2rem;
   }
+
+  .l-wrapper-footer {
+    width: 100%;
+    max-width: 1260px;
+    margin: auto;
+    padding: 5.6rem 1.6rem 3.2rem;
+  }
   
   .l-grid {
     display: grid;

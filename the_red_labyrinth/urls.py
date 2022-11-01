@@ -24,3 +24,5 @@ urlpatterns = [
     path('', include('accounts.urls')),
 
 ]
+
+handler404 = "Main.views.page_not_found"

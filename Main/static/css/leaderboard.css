@@ -74,7 +74,7 @@ html {
     width: 100%;
     max-width: 1260px;
     margin: auto;
-    padding: 1.6rem 1.6rem 3.2rem;
+    /* padding: 1.6rem 1.6rem 3.2rem; */
   }
   
   .l-grid {

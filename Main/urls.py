@@ -6,6 +6,7 @@ urlpatterns = [
     path('leaderboard/', views.leaderboard, name='leaderboard'),
     path('dashboard/', views.dashboard, name='dashboard'),
 
+
     #Challenges
     path('start/', views.gettingStarted, name='start'),
     path('cookieMonster/', views.cookieMonster, name='cookieMonster'),
@@ -16,8 +17,8 @@ urlpatterns = [
     path('robots/', views.robots, name='robots'),
     path('robots/robots.txt/', views.robotstxt, name='robots.txt'),
     path('aperisolve/', views.aperisolve, name='aperisolve'),
-
-
+    path('killam/', views.killam, name='killam'),
+    path('whitespace/', views.blankspace, name='whitespace'),
 
 
 

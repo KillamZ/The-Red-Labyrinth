@@ -34,6 +34,9 @@ def leaderboard(request):
     context = {'player':Player.objects.get(username=request.user), 'players': all_players}
     return render(request, 'main/leaderboard.html', context)
 
+def page_not_found(request, exception):
+    return render(request, 'main/404.html', status=404)
+
 def dashboard(request):
     user = request.user
     context = {'user': user,'player':Player.objects.get(username=user), 'total_players':Player.objects.count(), 'challenges': Challenges.objects.all().order_by('points')[:]}
@@ -99,3 +102,14 @@ def robotstxt(request):
 def aperisolve(request):
     context = {"challenge": Challenges.objects.get(title="Aperisolve!")}
     return render(request, 'main/challenges/aperisolve.html', context)
+
+def killam(request):
+    show_flag = True if request.headers['User-Agent'].lower() == "killam" else False
+    flag = Challenges.objects.get(title="Killam").flag
+    context = {"challenge": Challenges.objects.get(title="Killam"), "show_flag": show_flag, "flag": flag}
+    return render(request, 'main/challenges/killam.html', context)
+
+def blankspace(request):
+    context = {"challenge": Challenges.objects.get(title="Blank Space by Taylor Swift")}
+    return render(request, 'main/challenges/blankspace.html', context)
+

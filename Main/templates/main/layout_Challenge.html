@@ -18,21 +18,34 @@
 </head>
 <body>
   <h1 hidden>{{ csrf_token }}</h1>
-  <div class="container">
-  <a href="{% url 'dashboard' %}" > BACK TO CHALLENGES </a>
 
-      <h1>{{challenge.description}}</h1><br><br>
+  <div class="container">
+  <div align="left">
+  <a href="{% url 'dashboard' %}" > BACK TO CHALLENGES </a>
+  </div>
+
+    <h1 style="font-size:4em">{{challenge.title}}</h1>
+
+
+      <h1>{{challenge.description}}</h1><br>
       <h1>{{challenge.hint}}</h1>
+      <h1 hidden>{{ csrf_token }}</h1>
+
       {% block content %}{% endblock %}
           
       <form id="key-form" method="POST">
-          <p hidden>{{ csrf_token }}</p>
+          <p hidden>{% csrf_token %}</p>
           <label for="key">enter flag here:</label>
           <input type="text" name="key" id="key" placeholder="code here" />
           <button type="submit">subMit</button>
       </form>
+
+
       
   </div>
+
+  {% block download %}  {% endblock download %}
+
 
   {% block global_scripts %}
   {% endblock %}
