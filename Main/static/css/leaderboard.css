@@ -22,6 +22,7 @@ html {
   html {
     font-size: 62.5%;
     box-sizing: border-box;
+    background-color: #111;
   }
   
   *, *:before, *:after {
@@ -217,7 +218,8 @@ html {
     width: 4.8rem;
     height: 4.8rem;
     box-shadow: inset 0px 0px 0px 1px currentColor;
-    border-radius: 50%;
+    border-radius: 4px;
+    border: 1px solid #111;
     background: var(--lightest);
     color: var(--dark);
   }
@@ -661,7 +663,6 @@ html {
 
   }
 #main {
-  height: 100vh;
   width: 100%;
   position: relative;
   background: #111111;
@@ -743,4 +744,10 @@ html {
   animation-delay: 13.5s;
   top: 20%;
   left: 60%;
+}
+
+.title{
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 }
