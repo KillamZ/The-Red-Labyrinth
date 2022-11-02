@@ -42,7 +42,12 @@ def page_not_found(request, exception):
 
 def dashboard(request):
     user = request.user
-    context = {'user': user,'player':Player.objects.get(username=user), 'total_players':Player.objects.count(), 'challenges': Challenges.objects.all().order_by('points')[:]}
+    all_players = Player.objects.all().order_by('-score')
+    for player in all_players:
+        if player.username == user.username:
+            rank = list(all_players).index(player) + 1
+            break
+    context = {'user': user,'player':Player.objects.get(username=user), 'total_players':all_players.count, 'rank':rank, 'challenges': Challenges.objects.all().order_by('points')[:]}
     if not request.user.is_authenticated:
         return redirect('login')
     return render(request, 'main/dashboard.html', context)
@@ -51,7 +56,7 @@ def dashboard(request):
 # Challenge pages
 
 def gettingStarted(request):
-    context = {"challenge": Challenges.objects.get(title="Getting Started")}
+    context = {"challenge": Challenges.objects.get(title="Getting Started"), "solved":False}
     if request.method == "GET":
         if not request.user.is_authenticated:
             return redirect('login')
@@ -64,8 +69,9 @@ def gettingStarted(request):
         if data['flag'] == Challenges.objects.get(title="Getting Started").flag:
             # Logic for right Code
             point_system(request, Challenges.objects.get(title="Getting Started").points)
+            Challenges.objects.get(title="Getting Started").solve_status = True
+            
             return JsonResponse({"works": True})
-
 
 
         else:

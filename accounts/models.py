@@ -5,6 +5,7 @@ from django.utils.translation import gettext as _
 
 from .managers import PlayerManager
 
+
 class School(models.Model):
     school = models.CharField(default=None, null=True, max_length=50)
 

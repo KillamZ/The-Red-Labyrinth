@@ -13,7 +13,7 @@
     {% endblock %}
 
     <title>
-      {% if title %}{{ title }}{% else %}Treasure Hunt{% endif %}
+      {% if title %}{{ title }}{% else %}The Red Labyrinth{% endif %}
     </title>
 </head>
 <body>
@@ -30,12 +30,15 @@
 
       {% block content %}{% endblock %}
       
+      {% if challenge.solve_status == False %}
       <h1 hidden>{{ csrf_token }}</h1>
-          <form id="key-form">
-              <label for="key">enter flag here:</label>
-              <input type="text" name="key" id="key" placeholder="code here" />
-              <button type="submit">subMit</button>
-          </form>
+      <form id="key-form">
+          <label for="key">enter flag here:</label>
+          <input type="text" name="key" id="key" placeholder="code here" />
+          <button type="submit">subMit</button>
+      </form>
+    {% endif %}
+
 
 
   <script src="{% static 'js/start.js' %}"></script>
