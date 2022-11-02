@@ -30,14 +30,13 @@
 
       {% block content %}{% endblock %}
       
-      {% if challenge.solve_status == False %}
+
       <h1 hidden>{{ csrf_token }}</h1>
       <form id="key-form">
           <label for="key">enter flag here:</label>
           <input type="text" name="key" id="key" placeholder="code here" />
           <button type="submit">subMit</button>
       </form>
-    {% endif %}
 
 
 

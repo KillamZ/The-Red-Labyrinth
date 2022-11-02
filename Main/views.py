@@ -57,21 +57,25 @@ def dashboard(request):
 
 def gettingStarted(request):
     context = {"challenge": Challenges.objects.get(title="Getting Started"), "solved":False}
+    context_solved = {"challenge": Challenges.objects.get(title="Getting Started"), "solved":True}
+
     if request.method == "GET":
         if not request.user.is_authenticated:
             return redirect('login')
-
-        return render(request, 'main/challenges/gettingstarted.html', context)
+        if(request.user in Challenges.objects.get(title="Getting Started").players_solved.all()):
+            return render(request, 'main/challenges/gettingStarted.html', context_solved)
+            
+        else: return render(request, 'main/challenges/gettingstarted.html', context)
     elif request.method == "POST":
         data = request.body
         data = json.loads(data.decode('utf-8'))
 
         if data['flag'] == Challenges.objects.get(title="Getting Started").flag:
             # Logic for right Code
-            point_system(request, Challenges.objects.get(title="Getting Started").points)
-            Challenges.objects.get(title="Getting Started").solve_status = True
-            
-            return JsonResponse({"works": True})
+            if(request.user not in Challenges.objects.get(title="Getting Started").players_solved.all()):
+                Challenges.objects.get(title="Getting Started").players_solved.add(Player.objects.get(username=request.user))
+                point_system(request, Challenges.objects.get(title="Getting Started").points)
+                return JsonResponse({"works": True})
 
 
         else:
@@ -102,23 +106,15 @@ def cookieMonster(request):
 
         if data['flag'] == Challenges.objects.get(title="Cookie Monster").flag:
             # Logic for right Code
-            point_system(request, Challenges.objects.get(title="Cookie Monster").points)
-            Challenges.objects.get(title="Cookie Monster").solve_status = True
-            return JsonResponse({"works": True})
+            if(request.user not in Challenges.objects.get(title="Cookie Monster").players_solved.all()):
+                Challenges.objects.get(title="Cookie Monster").players_solved.add(Player.objects.get(username=request.user))
+                point_system(request, Challenges.objects.get(title="Cookie Monster").points)
+                return JsonResponse({"works": True})
 
         else:
             # Logic for Wrong Code
             return JsonResponse({"works": False})
 
-
-def POSTman(request):
-    user = request.user
-    if request.method == "GET":
-        if not request.user.is_authenticated:
-            return redirect('login')
-
-        context = {"challenge": Challenges.objects.get(title="POSTman")}
-    return render(request, 'main/challenges/POSTman.html', context)
 
 def morse(request):
     user = request.user
@@ -135,10 +131,10 @@ def morse(request):
 
     if data['flag'] == Challenges.objects.get(title="Dot-Dash-Dot").flag:
         # Logic for right Code
-        point_system(request, Challenges.objects.get(title="Dot-Dash-Dot").points)
-        Challenges.objects.get(title="Dot-Dash-Dot").solve_status = True
-
-        return JsonResponse({"works": True})
+        if(request.user not in Challenges.objects.get(title="Dot-Dash-Dot").players_solved.all()):
+            Challenges.objects.get(title="Dot-Dash-Dot").players_solved.add(Player.objects.get(username=request.user))
+            point_system(request, Challenges.objects.get(title="Dot-Dash-Dot").points)
+            return JsonResponse({"works": True})
 
     else:
         # Logic for Wrong Code
@@ -159,10 +155,10 @@ def Vigil(request):
 
     if data['flag'] == Challenges.objects.get(title="Vigenere on Rail").flag:
         # Logic for right Code
-        point_system(request, Challenges.objects.get(title="Vigenere on Rail").points)
-        Challenges.objects.get(title="Vigenere on Rail").solve_status = True
-
-        return JsonResponse({"works": True})
+        if(request.user not in Challenges.objects.get(title="Vigenere on Rail").players_solved.all()):
+            Challenges.objects.get(title="Vigenere on Rail").players_solved.add(Player.objects.get(username=request.user))        
+            point_system(request, Challenges.objects.get(title="Vigenere on Rail").points)
+            return JsonResponse({"works": True})
 
     else:
         # Logic for Wrong Code
@@ -183,10 +179,11 @@ def baseball(request):
 
     if data['flag'] == Challenges.objects.get(title="BASEball Player").flag:
         # Logic for right Code
-        point_system(request, Challenges.objects.get(title="BASEball Player").points)
-        Challenges.objects.get(title="BASEball Player").solve_status = True
+        if(request.user not in Challenges.objects.get(title="BASEball Player").players_solved.all()):
+            Challenges.objects.get(title="BASEball Player").players_solved.add(Player.objects.get(username=request.user))
+            point_system(request, Challenges.objects.get(title="BASEball Player").points)
 
-        return JsonResponse({"works": True})
+            return JsonResponse({"works": True})
 
     else:
         # Logic for Wrong Code
@@ -207,10 +204,10 @@ def robots(request):
 
     if data['flag'] == Challenges.objects.get(title="Baymax Rocks!").flag:
         # Logic for right Code
-        point_system(request, Challenges.objects.get(title="Baymax Rocks!").points)
-        Challenges.objects.get(title="Baymax Rocks!").solve_status = True
-
-        return JsonResponse({"works": True})
+        if(request.user not in Challenges.objects.get(title="Baymax Rocks!").players_solved.all()):
+            Challenges.objects.get(title="Baymax Rocks!").players_solved.add(Player.objects.get(username=request.user))
+            point_system(request, Challenges.objects.get(title="Baymax Rocks!").points)
+            return JsonResponse({"works": True})
 
     else:
         # Logic for Wrong Code
@@ -241,8 +238,9 @@ def aperisolve(request):
 
     if data['flag'] == Challenges.objects.get(title="Aperisolve!").flag:
         # Logic for right Code
-        point_system(request, Challenges.objects.get(title="Aperisolve!").points)
-        Challenges.objects.get(title="Aperisolve!").solve_status = True
+        if(request.user not in Challenges.objects.get(title="Aperisolve!").players_solved.all()):
+            Challenges.objects.get(title="Aperisolve!").players_solved.add(Player.objects.get(username=request.user))
+            point_system(request, Challenges.objects.get(title="Aperisolve!").points)
 
         return JsonResponse({"works": True})
 
@@ -267,10 +265,11 @@ def killam(request):
 
         if data['flag'] == Challenges.objects.get(title="Killam").flag:
             # Logic for right Code
-            point_system(request, Challenges.objects.get(title="Killam").points)
-            Challenges.objects.get(title="Killam").solve_status = True
+            if(request.user not in Challenges.objects.get(title="Killam").players_solved.all()):
+                Challenges.objects.get(title="Killam").players_solved.add(Player.objects.get(username=request.user))
+                point_system(request, Challenges.objects.get(title="Killam").points)
 
-            return JsonResponse({"works": True})
+                return JsonResponse({"works": True})
 
         else:
             # Logic for Wrong Code
@@ -291,14 +290,23 @@ def blankspace(request):
 
     if data['flag'] == Challenges.objects.get(title="Blank Space by Taylor Swift").flag:
         # Logic for right Code
-        point_system(request, Challenges.objects.get(title="Blank Space by Taylor Swift").points)
-        Challenges.objects.get(title="Blank Space by Taylor Swift").solve_status = True
-
-        return JsonResponse({"works": True})
+        if(request.user not in Challenges.objects.get(title="Blank Space by Taylor Swift").players_solved.all()):
+            Challenges.objects.get(title="Blank Space by Taylor Swift").players_solved.add(Player.objects.get(username=request.user))
+            point_system(request, Challenges.objects.get(title="Blank Space by Taylor Swift").points)
+            return JsonResponse({"works": True})
 
     else:
         # Logic for Wrong Code
         return JsonResponse({"works": False})
+
+def POSTman(request):
+    user = request.user
+    if request.method == "GET":
+        if not request.user.is_authenticated:
+            return redirect('login')
+
+        context = {"challenge": Challenges.objects.get(title="POSTman")}
+    return render(request, 'main/challenges/POSTman.html', context)
 
 def point_system(request, points):
     if request.method == "POST":

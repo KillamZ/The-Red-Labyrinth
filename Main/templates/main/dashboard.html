@@ -39,7 +39,7 @@
         
         <div class="flex-child">
             
-          <h1> RANK: &nbsp; #{{rank}}/{{total_players}} </h1>
+          <h1> RANK: &nbsp; #{{rank}}/{{total_players}} {{solved}} </h1>
           <h1> POINTS: &nbsp; {{player.score}} </h1>
 
           {% comment %} <h2> 1500 POINTS </h2> {% endcomment %}
@@ -76,7 +76,7 @@
             <td class="table-data">{{challenge.points}}</td>
             <td class="table-data"><a href="../{{challenge.link}}" >Challenge Link</a></td></td>
             <td class="table-data">
-                {% if challenge.solve_status == True %}
+                {% if solved == True %}
                 ✅
                 {% else %}
                 
@@ -89,8 +89,8 @@
 </div>
 <div class="l-wrapper-footer">
     <hr>
-    <h1>IT COUNCIL, DPSS 2022-2023</h1>
-    <h3>MADE BY ZAID MALLIK</h3>
+    <h1>IT COUNCIL, DPSS 2022-2023 </h1>
+    <h3>MADE BY ZAID MALLIK</h3> 
 
 </div>
 </header>
