@@ -43,11 +43,23 @@ def page_not_found(request, exception):
 def dashboard(request):
     user = request.user
     all_players = Player.objects.all().order_by('-score')
+    all_challenges = Challenges.objects.all().order_by('points')[:]
+    isSolved = []
+    index = 0
+
+    for challenge in all_challenges:
+        if(request.user in challenge.players_solved.all()):
+            isSolved.append(True)
+            index += 1
+        else:
+            isSolved.append(False)
+    
     for player in all_players:
         if player.username == user.username:
             rank = list(all_players).index(player) + 1
             break
-    context = {'user': user,'player':Player.objects.get(username=user), 'total_players':all_players.count, 'rank':rank, 'challenges': Challenges.objects.all().order_by('points')[:]}
+    context = {'user': user,'player':Player.objects.get(username=user), 'total_players':all_players.count, 'rank':rank, 
+    'challenges': Challenges.objects.all().order_by('points')[:], 'isSolved':isSolved, 'index':index}
     if not request.user.is_authenticated:
         return redirect('login')
     return render(request, 'main/dashboard.html', context)
@@ -76,6 +88,8 @@ def gettingStarted(request):
                 Challenges.objects.get(title="Getting Started").players_solved.add(Player.objects.get(username=request.user))
                 point_system(request, Challenges.objects.get(title="Getting Started").points)
                 return JsonResponse({"works": True})
+            else:
+                return JsonResponse({"already submitted": True})
 
 
         else:
@@ -110,6 +124,8 @@ def cookieMonster(request):
                 Challenges.objects.get(title="Cookie Monster").players_solved.add(Player.objects.get(username=request.user))
                 point_system(request, Challenges.objects.get(title="Cookie Monster").points)
                 return JsonResponse({"works": True})
+            else:
+                return JsonResponse({"already submitted": True})
 
         else:
             # Logic for Wrong Code
@@ -135,6 +151,8 @@ def morse(request):
             Challenges.objects.get(title="Dot-Dash-Dot").players_solved.add(Player.objects.get(username=request.user))
             point_system(request, Challenges.objects.get(title="Dot-Dash-Dot").points)
             return JsonResponse({"works": True})
+        else:
+                return JsonResponse({"already submitted": True})
 
     else:
         # Logic for Wrong Code
@@ -159,6 +177,8 @@ def Vigil(request):
             Challenges.objects.get(title="Vigenere on Rail").players_solved.add(Player.objects.get(username=request.user))        
             point_system(request, Challenges.objects.get(title="Vigenere on Rail").points)
             return JsonResponse({"works": True})
+        else:
+                return JsonResponse({"already submitted": True})
 
     else:
         # Logic for Wrong Code
@@ -182,8 +202,9 @@ def baseball(request):
         if(request.user not in Challenges.objects.get(title="BASEball Player").players_solved.all()):
             Challenges.objects.get(title="BASEball Player").players_solved.add(Player.objects.get(username=request.user))
             point_system(request, Challenges.objects.get(title="BASEball Player").points)
-
             return JsonResponse({"works": True})
+        else:
+            return JsonResponse({"already submitted": True})
 
     else:
         # Logic for Wrong Code
@@ -208,6 +229,8 @@ def robots(request):
             Challenges.objects.get(title="Baymax Rocks!").players_solved.add(Player.objects.get(username=request.user))
             point_system(request, Challenges.objects.get(title="Baymax Rocks!").points)
             return JsonResponse({"works": True})
+        else:
+            return JsonResponse({"already submitted": True})
 
     else:
         # Logic for Wrong Code
@@ -241,8 +264,9 @@ def aperisolve(request):
         if(request.user not in Challenges.objects.get(title="Aperisolve!").players_solved.all()):
             Challenges.objects.get(title="Aperisolve!").players_solved.add(Player.objects.get(username=request.user))
             point_system(request, Challenges.objects.get(title="Aperisolve!").points)
-
-        return JsonResponse({"works": True})
+            return JsonResponse({"works": True})
+        else:
+            return JsonResponse({"already submitted": True})
 
     else:
         # Logic for Wrong Code
@@ -268,8 +292,9 @@ def killam(request):
             if(request.user not in Challenges.objects.get(title="Killam").players_solved.all()):
                 Challenges.objects.get(title="Killam").players_solved.add(Player.objects.get(username=request.user))
                 point_system(request, Challenges.objects.get(title="Killam").points)
-
                 return JsonResponse({"works": True})
+            else:
+                return JsonResponse({"already submitted": True})
 
         else:
             # Logic for Wrong Code
@@ -294,6 +319,8 @@ def blankspace(request):
             Challenges.objects.get(title="Blank Space by Taylor Swift").players_solved.add(Player.objects.get(username=request.user))
             point_system(request, Challenges.objects.get(title="Blank Space by Taylor Swift").points)
             return JsonResponse({"works": True})
+        else:
+            return JsonResponse({"already submitted": True})
 
     else:
         # Logic for Wrong Code

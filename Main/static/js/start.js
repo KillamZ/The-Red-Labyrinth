@@ -35,6 +35,11 @@ response.then((data) => {
 
                  // Logic for correct code
             }
+            else if(json_data["already submitted"])
+            {
+                alert("you have already been awarded points for this challenge!") // Logic for Wrong Code
+            }
+
             else
             {
                 alert("Wrong Code") // Logic for Wrong Code

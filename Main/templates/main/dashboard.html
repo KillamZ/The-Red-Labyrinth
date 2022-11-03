@@ -76,8 +76,9 @@
             <td class="table-data">{{challenge.points}}</td>
             <td class="table-data"><a href="../{{challenge.link}}" >Challenge Link</a></td></td>
             <td class="table-data">
-                {% if solved == True %}
-                ✅
+                {% load index %}
+                {% if isSolved|index:forloop.counter0 %}
+                ✅ 
                 {% else %}
                 
                 {% endif %}
